@@ -41,6 +41,16 @@ describe TaxReceipt do
     end
   end
 
+  describe "add_line_item" do
+    let(:line_items) { subject.instance_variable_get(:@line_items) }
+
+    it "appends a supplied LineItem instance to the line_items array" do
+      expect do 
+        subject.add_line_item(instance_double(LineItem))
+      end.to change{ line_items.count }.from(2).to(3)
+    end
+  end
+
   describe "#sales_tax" do
     it "sums the tax amount for all line items" do
       expect(subject.sales_tax).to eq(BigDecimal.new("3.20"))
