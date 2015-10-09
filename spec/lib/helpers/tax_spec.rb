@@ -10,7 +10,7 @@ describe Tax do
     subject { described_class.rate_calculator(item) }
     let(:item) { "Car" }
 
-    it "returns a BigDecimal" do
+    it "returns a BigDecimal representation of the tax amount" do
       is_expected.to be_kind_of(BigDecimal)
     end
 
@@ -66,6 +66,20 @@ describe Tax do
 
         it { is_expected.to eq(BigDecimal("0.15")) }
       end
+    end
+  end
+
+  describe ".amount_calculator" do
+    subject { described_class.amount_calculator(item, figure) }
+    let(:item) { "Pencil" }
+    let(:figure) { BigDecimal("1.08") }
+
+    it "returns a BigDecimal representation of the tax amount" do
+      is_expected.to be_kind_of(BigDecimal)
+    end
+
+    it "returns the tax amount rounded up to the nearest 0.05" do
+      is_expected.to eq(BigDecimal(".15"))
     end
   end
 end
