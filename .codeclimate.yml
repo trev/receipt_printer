@@ -1,17 +1,11 @@
-# Commented until CodeClimate Platform plays
-# as nice as Classic
-#
-# engines:
-#   rubocop:
-#     enabled: true
-# 
-# ratings:
-#   paths:
-#   - lib/**
-#   - "**.rb"
+engines:
+  rubocop:
+    enabled: true
 
-languages:
-  Ruby: true
+ratings:
+  paths:
+  - lib/**
+  - "**.rb"
 
 exclude_paths:
 - spec/**/*
